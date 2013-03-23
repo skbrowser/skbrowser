@@ -1,0 +1,60 @@
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+using Gecko;
+namespace Webbrowser
+{
+    public partial class Form1 : Form
+    {
+        public Form1()
+        {
+            InitializeComponent();
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            Gecko.GeckoWebBrowser web = new Gecko.GeckoWebBrowser();
+            TabPage tab = new TabPage();
+            tabControl1.Controls.Add(tab);
+            tab.Controls.Add(web);
+            web.Navigate("http://www.google.fr/");
+            web.Dock = tabControl1.Dock;
+            web.DocumentTitle.ToString();
+            tab.Text = web.DocumentTitle;
+            textBox1.Text = web.DocumentTitle;
+
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            WebBrowser web = new WebBrowser();
+            tabControl1.SelectedTab.Text = web.DocumentTitle;
+            
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            WebBrowser web = new WebBrowser();
+            TabPage tab = new TabPage();
+            tabControl1.Controls.Add(tab);
+            tab.Controls.Add(web);
+            web.Navigate("http://www.google.fr/");
+            web.Dock = tabControl1.Dock;
+            web.DocumentTitle.ToString();
+            tab.Text = web.DocumentTitle;
+            textBox1.Text = web.DocumentTitle;
+        }
+    }
+}
